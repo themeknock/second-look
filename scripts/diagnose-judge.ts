@@ -1,5 +1,7 @@
 /** Why does the one-call judge flag clean runs, and what does it miss? Cache-only, free. */
-import { loadDevVars, pool } from '../src/dev-vars';
+import { loadDevVars } from '../src/dev-vars';
+import { fileCache } from '../src/llm-cache-node';
+import { pool } from '../src/pool';
 import { createLlmExtractor } from '../src/extract';
 import { createLlmJudge } from '../src/judge';
 import { createLlmClient } from '../src/llm';
@@ -9,7 +11,7 @@ import { loadLabels, loadSeedRuns } from '../seed/load';
 loadDevVars();
 
 async function main() {
-  const client = createLlmClient()!;
+  const client = createLlmClient(process.env, fileCache)!;
   const runs = loadSeedRuns();
   const labels = loadLabels();
   const judge = createLlmJudge(client);

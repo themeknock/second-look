@@ -2,7 +2,9 @@ import { appendFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { runChecks, runVerdict } from '../src/checks';
-import { loadDevVars, pool } from '../src/dev-vars';
+import { loadDevVars } from '../src/dev-vars';
+import { fileCache } from '../src/llm-cache-node';
+import { pool } from '../src/pool';
 import { createLlmExtractor, EXTRACT_PROMPT_VERSION, extractClaimsWithRules } from '../src/extract';
 import { createLlmJudge } from '../src/judge';
 import { addUsage, createLlmClient, ZERO_USAGE, type LlmUsage } from '../src/llm';
@@ -90,7 +92,7 @@ describe('eval: does checking claims against evidence beat asking a model if the
         }),
       });
 
-      const client = createLlmClient();
+      const client = createLlmClient(process.env, fileCache);
 
       if (client) {
         // Row 2 - the real pipeline: LLM says what was claimed, code says whether it holds.

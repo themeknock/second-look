@@ -16,12 +16,15 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.126.0",
+    "hono": "^4.13.8",
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260916.1",
     "@types/node": "^20.19.43",
     "tsx": "^4.19.2",
     "typescript": "^5.6.3",
-    "vitest": "^2.1.8"
+    "vitest": "^2.1.8",
+    "wrangler": "^4.132.0"
   }
 }

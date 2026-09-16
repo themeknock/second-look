@@ -4,8 +4,8 @@
 actually happened.** "You're booked for Tuesday at 3" only counts if there is a booking for
 Tuesday at 3.
 
-> Sessions 1-2 of 4. The pipeline and its eval are built and measured; the Worker and the
-> dashboard come next. This README is replaced in session 4 with the full version.
+> Sessions 1-3 of 4. Live at **https://review.themeknock.net** with the labelled synthetic
+> seed ingested. The real dashboard is session 4; this README is replaced then.
 
 Try it in 30 seconds:
 
@@ -37,6 +37,14 @@ front of it, and nobody is checking what is missing.
 **The decision I'd defend:** the LLM is never asked whether the agent was right. It extracts
 claims; code checks them against tool logs and a catalogue. Absence of a relevant tool call is
 UNVERIFIABLE, never CONTRADICTED - absence of evidence is not evidence of lying.
+
+## Running it
+
+```
+npm i && npm test              # the eval; needs Node 20+ and an LLM key in .dev.vars
+npx wrangler dev --port 8787   # the Worker locally (wrangler needs Node 22+)
+BASE=https://your-instance npx tsx scripts/ingest-seed.ts --review
+```
 
 ## The data is synthetic and says so
 

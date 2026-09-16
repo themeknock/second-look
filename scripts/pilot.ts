@@ -2,10 +2,13 @@
 import { runChecks, runVerdict } from '../src/checks';
 import { createLlmExtractor } from '../src/extract';
 import { createLlmClient } from '../src/llm';
+import { fileCache } from '../src/llm-cache-node';
+import { loadDevVars } from '../src/dev-vars';
 import { loadLabels, loadSeedRuns } from '../seed/load';
 
 async function main() {
-  const client = createLlmClient();
+  loadDevVars();
+  const client = createLlmClient(process.env, fileCache);
   if (!client) throw new Error('no LLM key found');
   console.log(`provider=${client.provider} model=${client.model}\n`);
 

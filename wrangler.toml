@@ -1,0 +1,27 @@
+name = "second-look"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+account_id = "bcb80f71a34b89b03a218f7cad8e0809"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "second-look"
+database_id = "4a0ce863-1409-4034-aa9b-3af65c8e24c2"
+migrations_dir = "migrations"
+
+[triggers]
+crons = ["*/10 * * * *"]
+
+[vars]
+LLM_PROVIDER = "openrouter"
+EXTRACT_MODEL = "deepseek/deepseek-v4-flash-0731"
+MAX_CLAIMS_PER_RUN = "20"
+CRON_SAMPLE_SIZE = "25"
+
+[[routes]]
+pattern = "review.themeknock.net"
+custom_domain = true
+
+[observability]
+enabled = true

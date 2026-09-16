@@ -1,0 +1,11 @@
+# Copy to .dev.vars. Never commit the real file.
+#
+# The spec pins Anthropic + claude-sonnet-5. The published eval numbers were produced on
+# OpenRouter with a cheaper model; both paths are in src/llm.ts, LLM_PROVIDER picks one.
+OPENROUTER_API_KEY=
+# ANTHROPIC_API_KEY=
+LLM_PROVIDER=openrouter
+EXTRACT_MODEL=deepseek/deepseek-v4-flash-0731
+
+# Long random string. Bearer token for /ingest, /review and /runs.
+INGEST_KEY=

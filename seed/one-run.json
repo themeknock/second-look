@@ -1,0 +1,115 @@
+{
+  "run_id": "call_01J8N000",
+  "agent": "support-bot",
+  "started_at": "2026-08-18T14:32:00Z",
+  "ended_at": "2026-08-18T14:32:53Z",
+  "transcript": [
+    {
+      "i": 0,
+      "role": "user",
+      "text": "Morning, I have a question about an invoice from last week, it looks wrong.",
+      "ts": "2026-08-18T14:32:07Z"
+    },
+    {
+      "i": 1,
+      "role": "assistant",
+      "text": "Billing is handled by the office rather than me, so let me put you through to them now.",
+      "ts": "2026-08-18T14:32:11Z"
+    },
+    {
+      "i": 2,
+      "role": "user",
+      "text": "Where are you based?",
+      "ts": "2026-08-18T14:32:20Z"
+    },
+    {
+      "i": 3,
+      "role": "assistant",
+      "text": "Our office is at 412 Northgate Way, Suite 7. Parking is on the same side.",
+      "ts": "2026-08-18T14:32:24Z"
+    },
+    {
+      "i": 4,
+      "role": "user",
+      "text": "Do you come out to 19125?",
+      "ts": "2026-08-18T14:32:31Z"
+    },
+    {
+      "i": 5,
+      "role": "assistant",
+      "text": "Yes, we cover 19125. Our vans are out that way most days.",
+      "ts": "2026-08-18T14:32:37Z"
+    },
+    {
+      "i": 6,
+      "role": "assistant",
+      "text": "Anything else I can help with?",
+      "ts": "2026-08-18T14:32:41Z"
+    },
+    {
+      "i": 7,
+      "role": "user",
+      "text": "Perfect, thank you.",
+      "ts": "2026-08-18T14:32:48Z"
+    },
+    {
+      "i": 8,
+      "role": "assistant",
+      "text": "Thanks for calling. Have a good day.",
+      "ts": "2026-08-18T14:32:52Z"
+    }
+  ],
+  "events": [
+    {
+      "ts": "2026-08-18T14:32:00Z",
+      "type": "call.started",
+      "name": "inbound",
+      "args": {
+        "from": "+1555216033"
+      }
+    },
+    {
+      "ts": "2026-08-18T14:32:12Z",
+      "type": "transfer.promised",
+      "name": "office"
+    },
+    {
+      "ts": "2026-08-18T14:32:13Z",
+      "type": "transfer.executed",
+      "name": "office",
+      "result": {
+        "queue": "billing",
+        "wait_seconds": 12
+      }
+    },
+    {
+      "ts": "2026-08-18T14:32:32Z",
+      "type": "tool.called",
+      "name": "kb_lookup",
+      "args": {
+        "topic": "service_area",
+        "postcode": "19125"
+      }
+    },
+    {
+      "ts": "2026-08-18T14:32:33Z",
+      "type": "tool.result",
+      "name": "kb_lookup",
+      "result": {
+        "topic": "service_area",
+        "postcode": "19125",
+        "covered": true
+      }
+    },
+    {
+      "ts": "2026-08-18T14:32:53Z",
+      "type": "call.ended",
+      "result": {
+        "reason": "transferred"
+      }
+    }
+  ],
+  "ground_truth": {
+    "catalogue_version": "2026-09-01"
+  }
+}

@@ -9,10 +9,6 @@
  * The LLM only ever returns structured JSON. It is never asked for prose, and never
  * asked whether the agent was right.
  */
-import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-
 export interface LlmUsage {
   input_tokens: number;
   output_tokens: number;
@@ -53,44 +49,36 @@ export function addUsage(a: LlmUsage, b: LlmUsage): LlmUsage {
 }
 
 /**
- * Responses are cached on disk by (provider, model, prompt) hash. Re-running the eval
- * does not re-spend. The cache stores the usage that the original call reported, so the
- * cost in the report is the real cost of producing those numbers, not zero.
+ * Caching is pluggable because this code runs in two places. Node (tests, scripts) gets a
+ * file cache so re-running a 200-run eval does not re-spend; the Worker gets a no-op,
+ * because node:fs cannot ship inside a Worker.
  */
-const CACHE_DIR = join(process.cwd(), '.llm-cache');
-
-function cacheKey(provider: string, model: string, req: JsonRequest): string {
-  return createHash('sha256')
-    .update(JSON.stringify([provider, model, 'no-reasoning', req.system, req.user, req.schema_name, req.schema]))
-    .digest('hex')
-    .slice(0, 32);
+export interface LlmCache {
+  get<T>(req: CacheableRequest): { data: T; usage: LlmUsage } | null;
+  set(req: CacheableRequest, value: { data: unknown; usage: LlmUsage }): void;
 }
 
-function readCache<T>(key: string): { data: T; usage: LlmUsage } | null {
-  const file = join(CACHE_DIR, `${key}.json`);
-  if (!existsSync(file)) return null;
-  try {
-    return JSON.parse(readFileSync(file, 'utf8'));
-  } catch {
-    return null;
-  }
+export interface CacheableRequest extends JsonRequest {
+  provider: string;
+  model: string;
 }
 
-function writeCache(key: string, value: unknown): void {
-  mkdirSync(CACHE_DIR, { recursive: true });
-  writeFileSync(join(CACHE_DIR, `${key}.json`), JSON.stringify(value));
-}
+export const noopCache: LlmCache = {
+  get: () => null,
+  set: () => undefined,
+};
 
 class OpenRouterClient implements LlmClient {
   provider = 'openrouter';
   constructor(
     readonly model: string,
     private readonly apiKey: string,
+    private readonly cache: LlmCache,
   ) {}
 
   async json<T>(req: JsonRequest): Promise<LlmResult<T>> {
-    const key = cacheKey(this.provider, this.model, req);
-    const cached = readCache<T>(key);
+    const cacheable = { ...req, provider: this.provider, model: this.model };
+    const cached = this.cache.get<T>(cacheable);
     if (cached) {
       return { data: cached.data, usage: { ...cached.usage, calls: 0, cache_hits: 1 } };
     }
@@ -152,7 +140,7 @@ class OpenRouterClient implements LlmClient {
       }
       try {
         const data = JSON.parse(text) as T;
-        writeCache(key, { data, usage });
+        this.cache.set(cacheable, { data, usage });
         return { data, usage };
       } catch (err) {
         lastError = `not valid JSON (${(err as Error).message})`;
@@ -167,11 +155,12 @@ class AnthropicClient implements LlmClient {
   constructor(
     readonly model: string,
     private readonly apiKey: string,
+    private readonly cache: LlmCache,
   ) {}
 
   async json<T>(req: JsonRequest): Promise<LlmResult<T>> {
-    const key = cacheKey(this.provider, this.model, req);
-    const cached = readCache<T>(key);
+    const cacheable = { ...req, provider: this.provider, model: this.model };
+    const cached = this.cache.get<T>(cacheable);
     if (cached) return { data: cached.data, usage: { ...cached.usage, calls: 0, cache_hits: 1 } };
 
     const { default: Anthropic } = await import('@anthropic-ai/sdk');
@@ -204,7 +193,7 @@ class AnthropicClient implements LlmClient {
       };
       if (block && 'input' in block) {
         const data = block.input as T;
-        writeCache(key, { data, usage });
+        this.cache.set(cacheable, { data, usage });
         return { data, usage };
       }
       lastError = 'no tool_use block in the reply';
@@ -213,13 +202,16 @@ class AnthropicClient implements LlmClient {
   }
 }
 
-export function createLlmClient(env: Record<string, string | undefined> = process.env): LlmClient | null {
+export function createLlmClient(
+  env: Record<string, string | undefined>,
+  cache: LlmCache = noopCache,
+): LlmClient | null {
   const provider = env.LLM_PROVIDER ?? (env.OPENROUTER_API_KEY ? 'openrouter' : env.ANTHROPIC_API_KEY ? 'anthropic' : '');
   if (provider === 'openrouter' && env.OPENROUTER_API_KEY) {
-    return new OpenRouterClient(env.EXTRACT_MODEL ?? 'deepseek/deepseek-v4-flash-0731', env.OPENROUTER_API_KEY);
+    return new OpenRouterClient(env.EXTRACT_MODEL ?? 'deepseek/deepseek-v4-flash-0731', env.OPENROUTER_API_KEY, cache);
   }
   if (provider === 'anthropic' && env.ANTHROPIC_API_KEY) {
-    return new AnthropicClient(env.EXTRACT_MODEL ?? 'claude-sonnet-5', env.ANTHROPIC_API_KEY);
+    return new AnthropicClient(env.EXTRACT_MODEL ?? 'claude-sonnet-5', env.ANTHROPIC_API_KEY, cache);
   }
   return null;
 }
