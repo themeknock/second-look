@@ -1,0 +1,24 @@
+{
+  "name": "second-look",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reads what an AI agent told the user and checks every claim against what actually happened.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "seed": "tsx seed/generate.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.8"
+  }
+}

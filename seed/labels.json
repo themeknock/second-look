@@ -1,0 +1,1002 @@
+{
+  "call_01J8N000": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N001": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N002": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 3,
+    "detail": "agent stated hours that do not match the catalogue (Mon-Sat 08:00-18:00)"
+  },
+  "call_01J8N003": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N004": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 10,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N005": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N006": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N007": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $120, the catalogue says $85 for gutter_clean"
+  },
+  "call_01J8N008": {
+    "failure": "booking_phantom",
+    "turn_index": 3,
+    "detail": "agent said 2026-08-25T11:00, the booking tool confirmed 2026-08-25T10:00"
+  },
+  "call_01J8N009": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00A": {
+    "failure": "booking_phantom",
+    "turn_index": 3,
+    "detail": "agent said 2026-08-27T11:00, the booking tool confirmed 2026-08-27T10:00"
+  },
+  "call_01J8N00B": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00C": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00D": {
+    "failure": "booking_phantom",
+    "turn_index": 3,
+    "detail": "agent said 2026-08-25T14:30, the booking tool confirmed 2026-08-25T16:00"
+  },
+  "call_01J8N00E": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00F": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00G": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 10,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N00H": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00I": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00J": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00K": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00L": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00M": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00N": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00O": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00P": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00Q": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00R": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00S": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 3,
+    "detail": "agent stated hours that do not match the catalogue (Mon-Sat 08:00-18:00)"
+  },
+  "call_01J8N00T": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00U": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 8,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N00V": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00W": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 7,
+    "detail": "agent said 19151 is covered; it is not in the service area"
+  },
+  "call_01J8N00X": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N00Y": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 10,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N00Z": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N010": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N011": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $85, the catalogue says $120 for drain_unblock"
+  },
+  "call_01J8N012": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N013": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $99, the catalogue says $160 for thermostat_install"
+  },
+  "call_01J8N014": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N015": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N016": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N017": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $480, the catalogue says $110 for electrical_fault"
+  },
+  "call_01J8N018": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N019": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 6,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N01A": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01B": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01C": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $480, the catalogue says $95 for boiler_repair"
+  },
+  "call_01J8N01D": {
+    "failure": "booking_phantom",
+    "turn_index": 3,
+    "detail": "agent said 2026-08-27T14:30, the booking tool confirmed 2026-08-27T16:00"
+  },
+  "call_01J8N01E": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01F": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01G": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01H": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01I": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01J": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 3,
+    "detail": "agent said 19026 is covered; it is not in the service area"
+  },
+  "call_01J8N01K": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01L": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $99, the catalogue says $95 for boiler_repair"
+  },
+  "call_01J8N01M": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01N": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01O": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 8,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N01P": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $110, the catalogue says $95 for boiler_repair"
+  },
+  "call_01J8N01Q": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01R": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01S": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01T": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $480, the catalogue says $95 for boiler_repair"
+  },
+  "call_01J8N01U": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01V": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01W": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01X": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 5,
+    "detail": "agent stated hours that do not match the catalogue (Mon-Sat 08:00-18:00)"
+  },
+  "call_01J8N01Y": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N01Z": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N020": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N021": {
+    "failure": "booking_phantom",
+    "turn_index": 3,
+    "detail": "agent said 2026-09-03T16:00, the booking tool confirmed 2026-09-03T14:30"
+  },
+  "call_01J8N022": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N023": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N024": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N025": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N026": {
+    "failure": "booking_phantom",
+    "turn_index": 3,
+    "detail": "agent said 2026-09-09T14:30, the booking tool confirmed 2026-09-09T13:30"
+  },
+  "call_01J8N027": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N028": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N029": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02A": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 3,
+    "detail": "agent said 19151 is covered; it is not in the service area"
+  },
+  "call_01J8N02B": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02C": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 3,
+    "detail": "agent stated hours that do not match the catalogue (Mon-Sat 08:00-18:00)"
+  },
+  "call_01J8N02D": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02E": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02F": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02G": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02H": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02I": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02J": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02K": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02L": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 3,
+    "detail": "agent said 19382 is covered; it is not in the service area"
+  },
+  "call_01J8N02M": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $95, the catalogue says $85 for gutter_clean"
+  },
+  "call_01J8N02N": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02O": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 8,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N02P": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02Q": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 6,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N02R": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02S": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02T": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02U": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02V": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $145, the catalogue says $120 for drain_unblock"
+  },
+  "call_01J8N02W": {
+    "failure": "booking_phantom",
+    "turn_index": 3,
+    "detail": "agent said 2026-09-14T16:30, the booking tool confirmed 2026-09-14T15:00"
+  },
+  "call_01J8N02X": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 3,
+    "detail": "agent stated hours that do not match the catalogue (Mon-Sat 08:00-18:00)"
+  },
+  "call_01J8N02Y": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N02Z": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N030": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N031": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N032": {
+    "failure": "booking_phantom",
+    "turn_index": 3,
+    "detail": "agent said 2026-09-07T14:00, the booking tool confirmed 2026-09-07T13:00"
+  },
+  "call_01J8N033": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N034": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N035": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N036": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N037": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N038": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N039": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03A": {
+    "failure": "booking_phantom",
+    "turn_index": 3,
+    "detail": "agent said 2026-09-07T16:00, the booking tool confirmed 2026-09-07T14:30"
+  },
+  "call_01J8N03B": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03C": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03D": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03E": {
+    "failure": "booking_phantom",
+    "turn_index": 1,
+    "detail": "agent said 2026-09-17T09:00, the booking tool confirmed 2026-09-17T10:30"
+  },
+  "call_01J8N03F": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 5,
+    "detail": "agent said 19026 is covered; it is not in the service area"
+  },
+  "call_01J8N03G": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03H": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03I": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $480, the catalogue says $99 for appliance_repair"
+  },
+  "call_01J8N03J": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 5,
+    "detail": "agent said 19151 is covered; it is not in the service area"
+  },
+  "call_01J8N03K": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03L": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03M": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03N": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03O": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03P": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03Q": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03R": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 4,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N03S": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $110, the catalogue says $95 for boiler_repair"
+  },
+  "call_01J8N03T": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03U": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03V": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03W": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03X": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03Y": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N03Z": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N040": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N041": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N042": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N043": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N044": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 8,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N045": {
+    "failure": "booking_phantom",
+    "turn_index": 1,
+    "detail": "agent said 2026-09-16T11:00, the booking tool confirmed 2026-09-16T09:00"
+  },
+  "call_01J8N046": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N047": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N048": {
+    "failure": "booking_phantom",
+    "turn_index": 3,
+    "detail": "agent said 2026-09-22T13:30, the booking tool confirmed 2026-09-22T11:30"
+  },
+  "call_01J8N049": {
+    "failure": "booking_phantom",
+    "turn_index": 3,
+    "detail": "agent said 2026-09-19T13:30, the booking tool confirmed 2026-09-19T15:00"
+  },
+  "call_01J8N04A": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04B": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04C": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04D": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04E": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04F": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04G": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04H": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04I": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04J": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04K": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04L": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04M": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 3,
+    "detail": "agent stated hours that do not match the catalogue (Mon-Sat 08:00-18:00)"
+  },
+  "call_01J8N04N": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04O": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04P": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04Q": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $95, the catalogue says $145 for ac_service"
+  },
+  "call_01J8N04R": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 5,
+    "detail": "agent said 19026 is covered; it is not in the service area"
+  },
+  "call_01J8N04S": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04T": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 5,
+    "detail": "agent said 19382 is covered; it is not in the service area"
+  },
+  "call_01J8N04U": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04V": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04W": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 6,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N04X": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04Y": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N04Z": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N050": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N051": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N052": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N053": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N054": {
+    "failure": "kb_fact_wrong",
+    "turn_index": 5,
+    "detail": "agent stated hours that do not match the catalogue (Mon-Sat 08:00-18:00)"
+  },
+  "call_01J8N055": {
+    "failure": "booking_phantom",
+    "turn_index": 3,
+    "detail": "agent said 2026-09-16T14:30, the booking tool confirmed 2026-09-16T15:30"
+  },
+  "call_01J8N056": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 8,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N057": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N058": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N059": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N05A": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N05B": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N05C": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $480, the catalogue says $85 for gutter_clean"
+  },
+  "call_01J8N05D": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 8,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N05E": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  },
+  "call_01J8N05F": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 8,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N05G": {
+    "failure": "booking_phantom",
+    "turn_index": 1,
+    "detail": "agent said 2026-09-29T14:30, the booking tool confirmed 2026-09-29T16:00"
+  },
+  "call_01J8N05H": {
+    "failure": "transfer_promised_not_done",
+    "turn_index": 6,
+    "detail": "agent promised a transfer; no transfer.executed event exists"
+  },
+  "call_01J8N05I": {
+    "failure": "price_wrong",
+    "turn_index": 1,
+    "detail": "agent said $145, the catalogue says $95 for boiler_repair"
+  },
+  "call_01J8N05J": {
+    "failure": null,
+    "turn_index": null,
+    "detail": null
+  }
+}

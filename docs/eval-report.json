@@ -1,0 +1,58 @@
+{
+  "run_at": "2026-09-16T08:58:36.028Z",
+  "seed_version": "20260916",
+  "extractor": "rules",
+  "triage": "none",
+  "runs": 200,
+  "labelled_failures": 60,
+  "claims_extracted": 567,
+  "claims_by_verdict": {
+    "SUPPORTED": 507,
+    "CONTRADICTED": 60
+  },
+  "claims_by_kind": {
+    "transfer": 30,
+    "kb_fact": 252,
+    "price": 102,
+    "booking": 142,
+    "promise": 41
+  },
+  "precision": 1,
+  "recall": 1,
+  "f1": 1,
+  "confusion": {
+    "tp": 60,
+    "fp": 0,
+    "fn": 0,
+    "tn": 140
+  },
+  "per_class": {
+    "booking_phantom": {
+      "labelled": 15,
+      "caught": 15,
+      "recall": 1
+    },
+    "price_wrong": {
+      "labelled": 15,
+      "caught": 15,
+      "recall": 1
+    },
+    "transfer_promised_not_done": {
+      "labelled": 15,
+      "caught": 15,
+      "recall": 1
+    },
+    "kb_fact_wrong": {
+      "labelled": 15,
+      "caught": 15,
+      "recall": 1
+    }
+  },
+  "false_positives": [],
+  "missed": [],
+  "caveats": [
+    "The seed transcripts are generated from templates and the rules extractor was written against those templates, so its recall here is a ceiling, not a forecast. Session 2 runs the same seed through an LLM extractor and an LLM-judge-only baseline; that ablation is the honest comparison.",
+    "The seed produced no UNVERIFIABLE claims, so the triage path is exercised by unit tests only.",
+    "Synthetic data throughout: fictional company, fictional callers, +1555 numbers. No real transcript is in this repo."
+  ]
+}

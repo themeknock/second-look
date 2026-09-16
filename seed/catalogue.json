@@ -1,0 +1,27 @@
+{
+  "version": "2026-09-01",
+  "company": "Northgate Home Services",
+  "services": [
+    { "key": "boiler_repair",        "label": "boiler repair",            "aliases": ["boiler", "boiler repair", "heating"],            "price": 95 },
+    { "key": "drain_unblock",        "label": "drain unblocking",         "aliases": ["drain", "drain unblocking", "blocked drain"],    "price": 120 },
+    { "key": "ac_service",           "label": "AC service",               "aliases": ["ac", "ac service", "air conditioning"],          "price": 145 },
+    { "key": "water_heater_install", "label": "water heater installation", "aliases": ["water heater", "water heater installation"],    "price": 480 },
+    { "key": "electrical_fault",     "label": "electrical fault finding", "aliases": ["electrical", "electrical fault finding"],        "price": 110 },
+    { "key": "gutter_clean",         "label": "gutter cleaning",          "aliases": ["gutter", "gutter cleaning", "gutters"],          "price": 85 },
+    { "key": "appliance_repair",     "label": "appliance repair",         "aliases": ["appliance", "appliance repair"],                 "price": 99 },
+    { "key": "thermostat_install",   "label": "smart thermostat install", "aliases": ["thermostat", "smart thermostat install"],        "price": 160 }
+  ],
+  "hours": {
+    "open": "08:00",
+    "close": "18:00",
+    "days": "Monday to Saturday",
+    "text": "Monday to Saturday, 8am to 6pm",
+    "sunday": "closed"
+  },
+  "service_area_postcodes": [
+    "19103", "19104", "19106", "19107", "19118", "19119",
+    "19123", "19125", "19128", "19130", "19146", "19147"
+  ],
+  "address": "412 Northgate Way, Suite 7",
+  "phone": "+15550142"
+}
