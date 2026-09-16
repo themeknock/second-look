@@ -14,14 +14,57 @@ const app = new Hono<{ Bindings: Env }>();
 app.get('/', async (c) => {
   const agent = c.req.query('agent') ?? undefined;
   const metrics = await readMetrics(c.env, { agent, days: 30 });
-  const { results } = await c.env.DB.prepare(
-    `SELECT run_id, agent, started_at, status, verdict FROM runs
-     WHERE verdict IS NOT NULL ${agent ? 'AND agent = ?' : ''}
-     ORDER BY (status = 'needs_human') DESC, (verdict = 'FAIL') DESC, started_at DESC LIMIT 25`,
+
+  // The queue is what a human still has to look at: anything failed or escalated, with the
+  // ones already decided sinking to the bottom.
+  const { results: queueRows } = await c.env.DB.prepare(
+    `SELECT run_id, agent, started_at, status, verdict, raw FROM runs
+     WHERE verdict IN ('FAIL','NEEDS_HUMAN') ${agent ? 'AND agent = ?' : ''}
+     ORDER BY (status = 'human_done') ASC, (verdict = 'FAIL') DESC, started_at DESC LIMIT 12`,
   )
     .bind(...(agent ? [agent] : []))
-    .all();
-  return c.html(renderDashboard({ metrics, queue: (results ?? []) as any[], agent }));
+    .all<{ run_id: string; agent: string; started_at: string; status: string; verdict: string; raw: string }>();
+
+  const rows = queueRows ?? [];
+  const ids = rows.map((r) => r.run_id);
+  const placeholders = ids.map(() => '?').join(',');
+
+  const claimsByRun = new Map<string, any[]>();
+  const humanByRun = new Map<string, any>();
+  if (ids.length) {
+    const { results: claims } = await c.env.DB.prepare(
+      `SELECT * FROM claims WHERE run_id IN (${placeholders}) ORDER BY turn_index, id`,
+    )
+      .bind(...ids)
+      .all<any>();
+    for (const claim of claims ?? []) {
+      const list = claimsByRun.get(claim.run_id) ?? [];
+      list.push({ ...claim, normalized: JSON.parse(claim.normalized), evidence: JSON.parse(claim.evidence) });
+      claimsByRun.set(claim.run_id, list);
+    }
+    const { results: humans } = await c.env.DB.prepare(
+      `SELECT * FROM human_reviews WHERE run_id IN (${placeholders})`,
+    )
+      .bind(...ids)
+      .all<any>();
+    for (const h of humans ?? []) humanByRun.set(h.run_id, h);
+  }
+
+  const queue = rows.map((row) => {
+    const run = JSON.parse(row.raw);
+    return {
+      run_id: row.run_id,
+      agent: row.agent,
+      started_at: row.started_at,
+      status: row.status,
+      verdict: row.verdict,
+      transcript: run.transcript,
+      claims: claimsByRun.get(row.run_id) ?? [],
+      human: humanByRun.get(row.run_id) ?? null,
+    };
+  });
+
+  return c.html(renderDashboard({ metrics, queue, agent }));
 });
 
 app.get('/metrics', async (c) => {
@@ -42,7 +85,16 @@ app.get('/runs/:run_id/public', async (c) => {
 app.use('/ingest', bearerAuth());
 app.use('/review/*', bearerAuth());
 app.use('/runs', bearerAuth());
-app.on(['GET', 'POST'], ['/runs/:run_id', '/runs/:run_id/human'], bearerAuth());
+app.use('/runs/:run_id', bearerAuth());
+app.use('/runs/:run_id/human', async (c, next) => {
+  // A seed run is labelled synthetic data and its whole point is to be clicked through by a
+  // stranger. A real run needs the key, always.
+  const row = await c.env.DB.prepare('SELECT is_seed FROM runs WHERE run_id = ?')
+    .bind(c.req.param('run_id'))
+    .first<{ is_seed: number }>();
+  if (row?.is_seed) return next();
+  return bearerAuth()(c, next);
+});
 
 app.post('/ingest', async (c) => {
   let body: unknown;

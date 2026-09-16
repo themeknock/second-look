@@ -6,3 +6,4 @@ dist/
 *.log
 
 .llm-cache/
+.verify/

@@ -1,6 +1,6 @@
 # Eval report
 
-Generated from `docs/eval-report.json` by `npm run report`. Eval run: **2026-09-16T09:31:41.069Z**.
+Generated from `docs/eval-report.json` by `npm run report`. Eval run: **2026-09-16T12:34:14.379Z**.
 
 - Seed `20260916`: 200 synthetic runs, 60 carrying exactly one injected failure.
 - Model: `openrouter/deepseek/deepseek-v4-flash-0731`, temperature 0, JSON schema output, reasoning off.

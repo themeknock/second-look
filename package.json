@@ -12,7 +12,8 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "report": "tsx scripts/report-md.ts",
-    "pilot": "tsx scripts/pilot.ts"
+    "pilot": "tsx scripts/pilot.ts",
+    "readme": "tsx scripts/readme.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.126.0",
