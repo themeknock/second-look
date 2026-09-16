@@ -10,9 +10,12 @@
   "scripts": {
     "seed": "tsx seed/generate.ts",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "report": "tsx scripts/report-md.ts",
+    "pilot": "tsx scripts/pilot.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.126.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

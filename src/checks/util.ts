@@ -16,6 +16,25 @@ export function turnTs(run: AgentRun, turnIndex: number): string {
   return run.transcript[turnIndex]?.ts ?? run.started_at;
 }
 
+/**
+ * The extractor quotes the assistant's sentence verbatim but sometimes reports the wrong
+ * turn number. The quote is evidence; the number is bookkeeping. Anchor on the quote.
+ */
+export function anchorTurn(run: AgentRun, claim: Claim): { index: number; ts: string } {
+  const needle = claim.text.trim().toLowerCase();
+  if (needle.length > 8) {
+    const matches = run.transcript.filter((t) => t.role === 'assistant' && t.text.toLowerCase().includes(needle));
+    if (matches.length === 1) return { index: matches[0].i, ts: matches[0].ts };
+    if (matches.length > 1) {
+      const best = matches.reduce((a, b) =>
+        Math.abs(a.i - claim.turn_index) <= Math.abs(b.i - claim.turn_index) ? a : b,
+      );
+      return { index: best.i, ts: best.ts };
+    }
+  }
+  return { index: claim.turn_index, ts: turnTs(run, claim.turn_index) };
+}
+
 export function eventsBefore(run: AgentRun, ts: string): IndexedEvent[] {
   return indexedEvents(run).filter(({ event }) => isBefore(event.ts, ts));
 }

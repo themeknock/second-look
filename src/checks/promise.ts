@@ -1,5 +1,5 @@
 import type { AgentRun, CheckedClaim, Claim } from '../schema';
-import { contradicted, eventsAfter, nameMatches, runIsComplete, supported, turnTs, unverifiable } from './util';
+import { anchorTurn, contradicted, eventsAfter, nameMatches, runIsComplete, supported, turnTs, unverifiable } from './util';
 
 const CHANNEL_TOOLS: Record<string, string[]> = {
   sms: ['send_sms', 'send_text', 'sms'],
@@ -12,7 +12,8 @@ export function checkPromise(run: AgentRun, claim: Claim): CheckedClaim {
   const checker = 'promise';
   const channel = String(claim.normalized.channel ?? 'message');
   const tools = CHANNEL_TOOLS[channel] ?? CHANNEL_TOOLS.message;
-  const ts = turnTs(run, claim.turn_index);
+  const anchor = anchorTurn(run, claim);
+  const ts = anchor.ts;
 
   const called = eventsAfter(run, ts).find(
     ({ event }) => event.type === 'tool.called' && nameMatches(event, tools),
@@ -29,7 +30,7 @@ export function checkPromise(run: AgentRun, claim: Claim): CheckedClaim {
   }
 
   return contradicted(claim, checker, {
-    checked: `no ${tools.join('/')} tool.called after turn ${claim.turn_index}`,
+    checked: `no ${tools.join('/')} tool.called after turn ${anchor.index}`,
     event_index: null,
     reason: 'the run finished without the promised message being sent',
   });

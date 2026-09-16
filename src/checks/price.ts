@@ -1,6 +1,6 @@
 import type { AgentRun, CheckedClaim, Claim } from '../schema';
 import { serviceByKey } from '../catalogue';
-import { contradicted, eventsBefore, nameMatches, resultObject, supported, turnTs, unverifiable } from './util';
+import { anchorTurn, contradicted, eventsBefore, nameMatches, resultObject, supported, turnTs, unverifiable } from './util';
 
 export const PRICE_TOOLS = ['get_price', 'price', 'quote'];
 
@@ -12,7 +12,8 @@ export function checkPrice(run: AgentRun, claim: Claim): CheckedClaim {
     return unverifiable(claim, checker, 'the claim did not state an amount to check');
   }
 
-  const ts = turnTs(run, claim.turn_index);
+  const anchor = anchorTurn(run, claim);
+  const ts = anchor.ts;
   const priceResults = eventsBefore(run, ts).filter(
     ({ event }) => event.type === 'tool.result' && nameMatches(event, PRICE_TOOLS),
   );

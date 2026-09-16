@@ -1,0 +1,90 @@
+{
+  "run_at": "2026-09-16T09:24:44.009Z",
+  "seed_version": "20260916",
+  "runs": 200,
+  "labelled_failures": 60,
+  "provider": "openrouter",
+  "model": "deepseek/deepseek-v4-flash-0731",
+  "extractor": "llm:deepseek/deepseek-v4-flash-0731",
+  "triage": "llm",
+  "precision": 0.678,
+  "recall": 0.983,
+  "f1": 0.803,
+  "cost_usd_per_run": 0.000157,
+  "rows": {
+    "rules_only": {
+      "label": "rules extractor + deterministic checks",
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "confusion": {
+        "tp": 60,
+        "fp": 0,
+        "fn": 0,
+        "tn": 140
+      },
+      "per_class": {
+        "booking_phantom": 1,
+        "price_wrong": 1,
+        "transfer_promised_not_done": 1,
+        "kb_fact_wrong": 1
+      },
+      "llm_calls": 0,
+      "cache_hits": 0,
+      "tokens_per_run": 0,
+      "cost_usd_per_run": 0,
+      "cost_usd_total": 0
+    },
+    "llm_extract+checks": {
+      "label": "LLM extraction + deterministic checks (deepseek/deepseek-v4-flash-0731)",
+      "precision": 0.678,
+      "recall": 0.983,
+      "f1": 0.803,
+      "confusion": {
+        "tp": 59,
+        "fp": 28,
+        "fn": 1,
+        "tn": 112
+      },
+      "per_class": {
+        "booking_phantom": 1,
+        "price_wrong": 1,
+        "transfer_promised_not_done": 0.933,
+        "kb_fact_wrong": 1
+      },
+      "llm_calls": 0,
+      "cache_hits": 269,
+      "tokens_per_run": 1254.87,
+      "cost_usd_per_run": 0.000157,
+      "cost_usd_total": 0.0313
+    },
+    "llm_judge_only": {
+      "label": "LLM-judge-only baseline (deepseek/deepseek-v4-flash-0731)",
+      "precision": 0.393,
+      "recall": 0.883,
+      "f1": 0.544,
+      "confusion": {
+        "tp": 53,
+        "fp": 82,
+        "fn": 7,
+        "tn": 58
+      },
+      "per_class": {
+        "booking_phantom": 1,
+        "price_wrong": 1,
+        "transfer_promised_not_done": 0.533,
+        "kb_fact_wrong": 1
+      },
+      "llm_calls": 0,
+      "cache_hits": 200,
+      "tokens_per_run": 837.805,
+      "cost_usd_per_run": 0.000052,
+      "cost_usd_total": 0.0104
+    }
+  },
+  "caveats": [
+    "The seed is synthetic and labelled: a fictional company, fictional callers, +1555 numbers. No real transcript is in this repo.",
+    "The rules row is a ceiling, not a forecast: that extractor was written against the same templates that generated the transcripts.",
+    "All three rows see the same evidence. The judge baseline is given the full transcript, the full event log AND the catalogue, because a baseline starved of evidence would prove nothing."
+  ]
+}
