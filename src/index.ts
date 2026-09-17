@@ -25,6 +25,16 @@ app.get('/', async (c) => {
     .bind(...(agent ? [agent] : []))
     .all<{ run_id: string; agent: string; started_at: string; status: string; verdict: string; raw: string }>();
 
+  // The heading counts the whole backlog, not this page of it. Without this the card above says
+  // 60 untrue and the heading said 12, because 12 is the LIMIT rather than an answer.
+  const backlogRow = await c.env.DB.prepare(
+    `SELECT COUNT(*) AS n FROM runs
+     WHERE verdict IN ('FAIL','NEEDS_HUMAN') AND status != 'human_done' ${agent ? 'AND agent = ?' : ''}`,
+  )
+    .bind(...(agent ? [agent] : []))
+    .first<{ n: number }>();
+  const backlog = backlogRow?.n ?? 0;
+
   const rows = queueRows ?? [];
   const ids = rows.map((r) => r.run_id);
   const placeholders = ids.map(() => '?').join(',');
@@ -64,7 +74,7 @@ app.get('/', async (c) => {
     };
   });
 
-  return c.html(renderDashboard({ metrics, queue, agent }));
+  return c.html(renderDashboard({ metrics, queue, agent, backlog }));
 });
 
 app.get('/metrics', async (c) => {

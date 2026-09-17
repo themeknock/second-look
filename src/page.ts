@@ -172,10 +172,20 @@ function queueItem(item: QueueItem, index: number): string {
 </details>`;
 }
 
-export function renderDashboard(data: { metrics: Metrics; queue: QueueItem[]; agent?: string }): string {
+export function renderDashboard(data: {
+  metrics: Metrics;
+  queue: QueueItem[];
+  agent?: string;
+  backlog?: number;
+}): string {
   const { metrics, queue, agent } = data;
   const t = metrics.totals;
-  const open = queue.filter((q) => !q.human).length;
+  // The backlog is the whole undecided pile. The queue below is one page of it, so the heading
+  // has to name the pile and the subline has to admit how much of it you are looking at —
+  // otherwise the heading reads as a contradiction of the counters above.
+  const undecidedHere = queue.filter((q) => !q.human).length;
+  const backlog = data.backlog ?? undecidedHere;
+  const showing = backlog > undecidedHere ? `<p class="showing">showing the ${undecidedHere} most recent</p>` : '';
 
   const agentTabs = ['', ...metrics.agents]
     .map(
@@ -267,6 +277,7 @@ export function renderDashboard(data: { metrics: Metrics; queue: QueueItem[]; ag
  .queuehead{margin:34px 0 16px}
  .queuehead h2{margin:0 0 5px}
  .queuehead p{margin:0;font-size:14px;color:var(--muted);max-width:60ch}
+ .queuehead .showing{margin:0 0 7px;font-size:13px;letter-spacing:.02em;color:var(--muted)}
  footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px;color:var(--muted)}
  footer a{color:inherit}
  @media(max-width:620px){
@@ -307,7 +318,8 @@ export function renderDashboard(data: { metrics: Metrics; queue: QueueItem[]; ag
 </section>
 
 <div class="queuehead">
-  <h2>${open} ${open === 1 ? 'call needs' : 'calls need'} a person</h2>
+  <h2>${backlog} ${backlog === 1 ? 'call needs' : 'calls need'} a person</h2>
+  ${showing}
   <p>Each one opens to the claim, the evidence it was checked against, and the transcript. Agree or override — that click is the loop closing.</p>
 </div>
 ${queue.length ? queue.map((item, i) => queueItem(item, i)).join('') : '<section><p class="empty">Nothing in the queue.</p></section>'}
