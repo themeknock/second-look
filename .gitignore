@@ -7,3 +7,4 @@ dist/
 
 .llm-cache/
 .verify/
+.DS_Store
